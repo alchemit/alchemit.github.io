@@ -21,7 +21,9 @@ Cloning:
     git clone https://github.com/username/username.github.io
     cd username.github.io
 
-After adding file or directory:
+After adding file or directory, or introducing changes to them, they will not
+be committed/published unless the new or updated files are marked for commit,
+with either `git-add` or `-a` option of `git-commit`:
 
     git add file
 
@@ -35,7 +37,12 @@ marked for addition or removal, or specified explicitly:
 
     git commit -a -m "description"
 
-Pushing them up to the repository. Option `-u` adds an upstream reference
+If after a commit more changes are introduced and one decides to make them part
+of the previous commit, they could be amended:
+
+    git commit -a --amend
+
+Pushing changes up to the repository. Option `-u` adds an upstream reference
 useful for tracking:
 
     git push -u origin master
@@ -43,6 +50,11 @@ useful for tracking:
 The `origin` is the repository from the source was fetched, and `master` is the
 branch name. Without these args, it would use defaults set by `git-config` and
 defined for the current repository in `.git/config`.
+
+WARNING: pushing changes over internet require authentication; in case of
+github.com, using username and password. It is therefore important that the
+repository url (e.g. in `.git/config` or command line) should be with `ssh:` or
+`https:`.
 
 <!--
 vim: spelllang=en:et:ts=4:tw=79:ff=unix
