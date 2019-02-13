@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>HTML test page</title>
+	<!-- Favicon: to jest wersja najbardziej wspierana ale plik ICO bez
+  kompresji jest duży - wyciąłem z niego wersje 48x48 i 64x64 -->
+  <link rel="shortcut icon" href="alchemit_favicon.ico" />
+	<!-- Wsparcie M$ dopiero od IE11 ale mały plik.
+  Niestety źle się wyświetla również w najnowszym FF (na ikonie 16x16
+  widać wycinki innych warstw, musiałyby być bez przeźroczystości)
+  <link rel="icon" type="image/png" href="alchemit_favicon.png" /> -->
+ </head> 
+	<!-- Wiele języków:
+  Można w jednym statycznym pliku HTML podać wszystkie tłumaczenia w
+  elementach <span lang=".." class="lang-.." i przełączyć styl na hidden
+  w zależności od języka (nawet po stronie serwera). Wada taka, że
+  transfer Nx większy bez potrzeby. Alternatywa to wybór języka w PHP.
+  Każdy płatny hosting go ma więc wadą by to było tylko dla serwera na
+  raspberry pi -->
+<body>
+<h1>Tytuł</h1>
+<noscript><h1>Ta strona nie działa bez Javascript</h1></noscript>
+<script type="application/x-javascript">
+	<!-- Ukrywanie kodu przed baaardzo starymi przeglądarkami
+function zmien(tag, kolor) {tag.style.background=kolor;};
+function los() {return Math.random()*200-100;}
+function unik(obj) {
+     var y = parseInt(obj.style.top) + los(); 
+     var x = parseInt(obj.style.left) + los();
+     if (x < 0) {x=0;};
+     if (y < 0) {y=0;};
+     obj.style.left = x+"px";
+     obj.style.top  = y+"px";
+     };
+	-->
+</script>
+<script type="application/x-javascript">
+	<!--
+  document.writeln("Test kodowania (charset): ąśćßźż→");
+	-->
+</script>
+<style type="text/css">
+#anim {text-align: center; width: 60px; height: 60px; background-color: #0000ff;
+       position: relative;
+}
+</style>
+<div id="ramka" style="width: 100%; height: 500px; background: gray;" 
+     style="position: relative;">
+trochę tekstu
+<!-- UWAGA: skrypt nie "widzi" ustawień stylu z tagu <style> tylko te "inline",
+     więc żeby ich odczyt i zmiana działały, muszę left i top podać
+     w tagu.  Można to obejść i poszukać w DOM tagu <style> po id albo
+     class.  Inline ma chyba pierwszeństwo więc ustawienie z poziomu js
+     powinno działać, o ile nie na wartość undefined -->
+<div id="anim" onmousemove="unik(this);" style="left: 200px; top: 100px;">Złap mnie</div>
+</div>
+</body>
+</html>
