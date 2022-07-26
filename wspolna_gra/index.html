@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css3"> 
+  <title>Just a game: (c) dad and son</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon_DnS.svg">
+  <!-- Favicon: https://en.wikipedia.org/wiki/Favicon
+       Safari (Apple) nie wspiera favikon svg j.w.
+       <link rel="shortcut icon" href="img/favicon.ico" />    
+       Plik ICO bez kompresji to jest wersja najbardziej wspierana
+       ale jest duży - dałem tylko warstwę 32x32 piksele.
+       Teoretyczna zaleta wersji 16x16, 32x32, 48x48 etc w różnych
+       warstwach niestety popsuta tym, że w FF warstwy są nakładane (na
+       ikonie 16x16 widać wycinki innych warstw, musiałyby być bez
+       przeźroczystości). Chyba lepiej używać PNG (małe pliki), ale ten
+       z kolei będzie skalowany. Dla PNG wsparcie M$ dopiero od IE11,
+       ale obecnie wszystkie przeglądarki go wspierają. Różne rozmiary
+       można podać jako osobne tagi <link> z różnymi atrybutami sizes
+       (kolejność ma znaczenie, patrz wikipedia powyżej). Apple zaleca
+       167x167 dla iPadów z retiną, 180x180 dla iPhonów; Android 48x48
+       dla zwykłych i 192x192 dla hires:
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon32x32.png" />
+  -->
+ </head> 
+
+<body>
+<h1>Nasza wspólna gra</h1>
+<noscript><h1>Ta strona nie działa bez Javascript</h1></noscript>
+
+<div id="game" style="width: 100%; height: 500px; background: gray;" 
+     style="position: relative;">
+trochę tekstu
+</div>
+
+<!-- KOD JAVASCRIPT 
+Umieszczony na końcu tagu body powoduje, że cały powyższy HTML jest
+wyświetlany od razu, zanim kod zostanie ściągnięty i wykonany.
+-->
+<script src="js/three.min.js"></script> 
+<script src="js/game.js"></script> 
+<SCRIPT>
+let scene = test_scene();
+let game_view = new OrthoView3D("game", scene);
+game_view.render();
+</SCRIPT>
+</body>
+</html>

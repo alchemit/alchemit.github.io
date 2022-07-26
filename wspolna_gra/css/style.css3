@@ -1,0 +1,10 @@
+/* Top level - main style */
+body {
+    color: #006;
+    background-color: #ffe;
+    font-family: Arial, sans-serif, sans;
+}
+
+/*
+vim: et:ai:spelllang=en:tw=79:ts=4
+*/

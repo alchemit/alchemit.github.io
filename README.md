@@ -4,8 +4,10 @@ The site created according to instructions
 [here](https://pages.github.com/). Currently just testing how this
 hosting works.
 
-It should be possible to redirect an own domain name by putting it in CNAME
-file in the main folder of the repository, according to
+It should be possible to redirect an own domain name by putting it in `CNAME`
+file in the main folder of the repository. If the `CNAME` file is present,
+the regular URL `username.github.io` shows `404 not found` error, so the only
+way to access the page is to have the proper domain defined in DNS.
 
 Before commiting changes from local machine to github, one should setup
 the author in `git-config`. It could be done with command:
@@ -15,6 +17,11 @@ the author in `git-config`. It could be done with command:
 After doing this, you may fix the identity used for committing changes:
 
     git commit --amend --reset-author
+
+But without the `--global` option, the author identity is defined locally for
+the repository. While the author email must be the same as with the registered
+github account, the author name may be a different nickname for different
+project.
 
 Cloning:
   
