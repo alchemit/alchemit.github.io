@@ -86,6 +86,37 @@ github.com, using username and password. It is therefore important that the
 repository url (e.g. in `.git/config` or command line) should be with `ssh:` or
 `https:`.
 
+## Resolving conflicts
+
+If the repository is updated from different sources (or different people), `git
+push` may fail with a message that one should first update local copy with
+remote changes using `git pull`. The latter will try to merge changes
+automatically, but if they occur in the same place in the same file, it will
+fail. To resolve the conflict manually, it is useful to configure and use the
+git merge tool(s):
+
+    git mergetool --tool-help
+    git config merge.tool vimdiff
+    git config merge.conflictstyle diff3
+    git config mergetool.prompt false
+    git mergetool
+
+The last command will run vim with 4 panes: upper left showing local version,
+middle upper with previous version, upper left with remote version, and the
+lower fourth editing window to edit and save the merged file. The process was
+described
+[here](https://phoenixnap.com/kb/how-to-resolve-merge-conflicts-in-git).
+
+After the manual merge, the changes have to be committed, and the temporary
+files created by merge tool should be cleaned up:
+
+    git commit -m "Merged local and remote changes in README.md"
+    git clean -f
+
+Finally, the remote repository can be updated:
+
+    git push
+
 <!--
 vim: spelllang=en:et:ts=4:tw=79:ff=unix
 -->
